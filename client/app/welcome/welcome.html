@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3><p class="navbar-text">Hello {{ getCurrentUser().name }}</p></h3>
+    </div>
+  </div>
+  <div class="row" ng-init="getUserCreditCard()">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Credit card info</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-credit-card-information">
+            <tbody>
+            <tr>
+              <td>Name:</td>
+              <td>{{ creditCard.name }}</td>
+            </tr>
+            <tr>
+              <td>Last 4 digits:</td>
+              <td>{{ creditCard.number }}</td>
+            </tr>
+            <tr>
+              <td>Expiration:</td>
+              <td>{{ creditCard.expiration }}</td>
+            </tr>
+            <tr>
+              <td>Zip:</td>
+              <td>{{ creditCard.zip }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+          <a ng-show="!creditCard" href="/creditcard/new/" data-original-title="Create new credit card info" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i
+            class="glyphicon glyphicon-edit"></i></a>
+          <a ng-show="creditCard" href="/creditcard/{{creditCard._id}}" data-original-title="Edit this credit card info" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i
+            class="glyphicon glyphicon-edit"></i></a>
+            <span class="pull-right">
+                <a ng-show="creditCard" data-original-title="Remove this credit card" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i
+                  class="glyphicon glyphicon-remove"></i></a>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+

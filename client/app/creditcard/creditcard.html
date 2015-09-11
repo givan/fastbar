@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Modify Credit Card</legend>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Name</label>
+
+            <div class="col-md-4">
+              <input id="name" name="name" type="text" placeholder="name" class="form-control input-md" ng-model="creditCard.name" required>
+              <span class="help-block">Name</span>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="cc_number">Credit Card Number</label>
+
+            <div class="col-md-4">
+              <input id="cc_number" name="cc_number" type="text" placeholder="credit card number" class="form-control input-md" ng-model="creditCard.number" required>
+              <span class="help-block">Credit card number</span>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="expiration">Expiration (MM/DD)</label>
+
+            <div class="col-md-4">
+              <input id="expiration" name="expiration" type="text" placeholder="expiration" class="form-control input-md" required ng-model="creditCard.expiration">
+              <span class="help-block">expiration (MM/DD)</span>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="cvc">CVC</label>
+
+            <div class="col-md-4">
+              <input id="cvc" name="cvc" type="text" placeholder="CVC" class="form-control input-md" required ng-model="creditCard.cvc">
+              <span class="help-block">CVC</span>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="zip">Zip</label>
+
+            <div class="col-md-4">
+              <input id="zip" name="zip" type="text" placeholder="zip" class="form-control input-md" required ng-model="creditCard.zip">
+              <span class="help-block">zip</span>
+            </div>
+          </div>
+
+          <!-- Button (Double) -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="btnSubmit"></label>
+
+            <div class="col-md-8">
+              <button id="btnSubmit" name="btnSubmit" class="btn btn-success" ng-click="save(creditCard)">Save</button>
+              <button id="btnCancel" name="btnCancel" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
