@@ -8,5 +8,7 @@ module.exports = {
     uri: 'mongodb://localhost/fastbar-test'
   },
 
-  seedDB: true
+  seedDB: true,
+
+  stripeKey: "sk_test_60l2veCVcDgVBiBWWOq1Yg5F"
 };

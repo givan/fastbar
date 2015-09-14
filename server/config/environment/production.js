@@ -19,5 +19,7 @@ module.exports = {
             process.env.MONGOHQ_URL ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/fastbar'
-  }
+  },
+
+  stripeKey: "sk_test_60l2veCVcDgVBiBWWOq1Yg5F"
 };

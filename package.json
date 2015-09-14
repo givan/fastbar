@@ -22,7 +22,8 @@
     "passport-facebook": "latest",
     "passport-local": "~0.1.6",
     "request": "^2.61.0",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "stripe": "^3.7.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

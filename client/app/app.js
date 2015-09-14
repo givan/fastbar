@@ -1,69 +1,70 @@
-;(function(){
-'use strict';
-angular
-  .module('fastbarApp', [
-    
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ui.router',
-  'ui.bootstrap'
+;
+(function () {
+    'use strict';
+    angular
+        .module('fastbarApp', [
 
-  ])
-  .config(Configuration) 
-  .factory('authInterceptor', authInterceptor)
-  .run(run);
+            'ngCookies',
+            'ngResource',
+            'ngSanitize',
+            'ui.router',
+            'ui.bootstrap'
 
-  /* @ngInject */
-  function authInterceptor($rootScope, $q, $cookieStore, $location) {
-    var instance = {
-      request: request,
-      responseError: responseError
-    };
+        ])
+        .config(Configuration)
+        .factory('authInterceptor', authInterceptor)
+        .run(run);
 
-    return instance;
+    /* @ngInject */
+    function authInterceptor($rootScope, $q, $cookieStore, $location) {
+        var instance = {
+            request: request,
+            responseError: responseError
+        };
 
-    // Add authorization token to headers
-    function request(config) {
-      config.headers = config.headers || {};
-      if ($cookieStore.get('token')) {
-        config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
-      }
-      return config;
-    }
+        return instance;
 
-    // Intercept 401s and redirect you to login
-    function responseError(response) {
-      if (response.status === 401) {
-        $location.path('/login');
-        // remove any stale tokens
-        $cookieStore.remove('token');
-        return $q.reject(response);
-      } else {
-        return $q.reject(response);
-      }
-    }
-  }
-
-  /* @ngInject */
-  function run($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/login');
+        // Add authorization token to headers
+        function request(config) {
+            config.headers = config.headers || {};
+            if ($cookieStore.get('token')) {
+                config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+            }
+            return config;
         }
-      });
-    });
-  }
-   
-  /* @ngInject */
-  function Configuration($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    $urlRouterProvider
-      .otherwise('/');
 
-    $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-  }
-  
+        // Intercept 401s and redirect you to login
+        function responseError(response) {
+            if (response.status === 401) {
+                $location.path('/login');
+                // remove any stale tokens
+                $cookieStore.remove('token');
+                return $q.reject(response);
+            } else {
+                return $q.reject(response);
+            }
+        }
+    }
+
+    /* @ngInject */
+    function run($rootScope, $location, Auth) {
+        // Redirect to login if route requires auth and you're not logged in
+        $rootScope.$on('$stateChangeStart', function (event, next) {
+            Auth.isLoggedInAsync(function (loggedIn) {
+                if (next.authenticate && !loggedIn) {
+                    $location.path('/login');
+                }
+            });
+        });
+    }
+
+    /* @ngInject */
+    function Configuration($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        $urlRouterProvider
+            .otherwise('/');
+
+        $locationProvider.html5Mode(true);
+        $httpProvider.interceptors.push('authInterceptor');
+    }
+
 }).call(this);

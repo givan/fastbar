@@ -29,11 +29,21 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="expiration">Expiration (MM/DD)</label>
+            <label class="col-md-4 control-label" for="expiration_month">Expiration (MM)</label>
 
             <div class="col-md-4">
-              <input id="expiration" name="expiration" type="text" placeholder="expiration" class="form-control input-md" required ng-model="creditCard.expiration">
-              <span class="help-block">expiration (MM/DD)</span>
+              <input id="expiration_month" name="expiration_month" type="text" placeholder="expiration_month" class="form-control input-md" required ng-model="creditCard.expiration_month">
+              <span class="help-block">expiration month (MM)</span>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="expiration_year">Expiration year (YY)</label>
+
+            <div class="col-md-4">
+              <input id="expiration_year" name="expiration_year" type="text" placeholder="expiration_year" class="form-control input-md" required ng-model="creditCard.expiration_year">
+              <span class="help-block">expiration (YY)</span>
             </div>
           </div>
 
